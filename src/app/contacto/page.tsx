@@ -1,6 +1,6 @@
 'use client';
-import { dbConnect } from '../lib/mongodb';
-import User from '../model/user';
+import { dbConnect } from '../../lib/mongodb';
+import User from '../../model/user';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import React, { useEffect, useState } from 'react';
 import axios from "axios"

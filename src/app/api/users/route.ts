@@ -1,5 +1,5 @@
-import { dbConnect } from "@/app/lib/mongodb"
-import User from "@/app/model/user"
+import { dbConnect } from "@/lib/mongodb"
+import User from "@/model/user"
 import { NextResponse } from "next/server"
 
 export async function GET() {

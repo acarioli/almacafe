@@ -1,5 +1,5 @@
-import './ui/global.css';
-import { lusitana, montserrat, libre_baskerville } from './ui/fonts';
+import '../ui/global.css';
+import { lusitana, montserrat, libre_baskerville } from '../ui/fonts';
 import Header from "./Header";
 import Footer from "./Footer";
 
