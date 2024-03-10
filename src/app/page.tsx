@@ -10,7 +10,6 @@ export default function Page() {
         {/* home */}
         <div className="bg-white ">
           <div className="relative isolate px-2 pt-1 pb-6 lg:px-8">
-\
             <div className="mx-auto max-w-2xl py-35 sm:py-35 lg:py-45">
               <div className="hidden sm:mb-36 sm:flex sm:justify-center">
               </div>
