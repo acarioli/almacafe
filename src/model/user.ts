@@ -10,6 +10,6 @@ const schema = new mongoose.Schema({
         type: String, 
         enum: ["contact", "franchise"]
     }
-})
+}, {timestamps:true })
 
 export default mongoose.models.User || mongoose.model('User', schema)
