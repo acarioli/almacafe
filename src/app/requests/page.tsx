@@ -2,6 +2,17 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const getFormattedDate = (date: Date) => {
+  const day = date.getUTCDate();
+  const month = date.getUTCMonth() + 1;
+  const year = date.getUTCFullYear();
+
+  return `${day < 10 ? "0" + day : day}/${
+    month < 10 ? "0" + month : month
+  }/${year}`;
+
+};
+
 const ContactRequests = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [requests, setRequests] = useState<any[]>([]);
@@ -114,11 +125,7 @@ const ContactRequests = () => {
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p className="text-gray-900 whitespace-no-wrap">
-                          {request.createdAt
-                            ? new Date(request.createdAt).toLocaleString(
-                                "dd/MM/YYYY"
-                              )
-                            : "Undefined"}
+                          {getFormattedDate(new Date(request.createdAt))}
                         </p>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
