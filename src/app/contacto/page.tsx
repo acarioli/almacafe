@@ -10,12 +10,11 @@ type Inputs = {
   firstname: string;
   lastname: string;
   email: string;
-  phonenumber: string;
+  phoneNumber: string;
   message: string;
 };
 
 const Contacto = () => { 
-  const [currentUrl, setCurrentUrl] = useState('');
   const {
     register,
     handleSubmit,
@@ -24,21 +23,14 @@ const Contacto = () => {
     reset,
     getValues
   } = useForm<Inputs>();
-  
   const [sent, setSent] = useState(false);
   
-  useEffect(() => {
-    if (process) {
-      setCurrentUrl(window.location.hostname);
-    }
-  }, []);
   
   const onSubmit: SubmitHandler<Inputs> = async() => {
     const { firstname, lastname, ...data } = {
       ...getValues(),
       fullName: `${getValues("firstname")} ${getValues("lastname")}` ,contactType: "contact"
     }
-    console.log("data", data);
     await axios.post(`/api/users`, data)
     setSent(true);
     reset();
@@ -152,14 +144,14 @@ const Contacto = () => {
             </div>
             <div className="sm:col-span-2">
               <label
-                htmlFor="phonenumber"
+                htmlFor="phoneNumber"
                 className="block text-sm font-semibold leading-6 text-gray-900"
               >
                 Número de teléfono
               </label>
               <input
                 defaultValue=""
-                {...register('phonenumber', {
+                {...register('phoneNumber', {
                   required: 'El número de teléfono es requerido',
                   validate: (fieldValue) => {
                     if (!fieldValue) {
@@ -173,11 +165,11 @@ const Contacto = () => {
                   },
                 })}
                 type="tel"
-                name="phonenumber"
+                name="phoneNumber"
                 className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
               <p className="mt-2 text-left text-xs text-red-600">
-                {errors.phonenumber?.message}
+                {errors.phoneNumber?.message}
               </p>
             </div>
             <div className="sm:col-span-2">

@@ -6,13 +6,12 @@ import axios from "axios";
 type Inputs = {
   fullName: string;
   email: string;
-  phonenumber: string;
+  phoneNumber: string;
   zone: string;
   message: string;
 };
 
 const Franquicias = () => {
-  const form = useForm<Inputs>();
   const {
     register,
     handleSubmit,
@@ -20,8 +19,8 @@ const Franquicias = () => {
     formState,
     reset,
     getValues,
+    setValue
   } = useForm<Inputs>();
-
   const [sent, setSent] = useState(false);
 
   const onSubmit: SubmitHandler<Inputs> = async () => {    
@@ -105,12 +104,12 @@ const Franquicias = () => {
             />
           </div>
           <div className="relative mb-4">
-            <label htmlFor="phonenumber" className="text-sm leading-7 text-gray-600">
+            <label htmlFor="phoneNumber" className="text-sm leading-7 text-gray-600">
               Número de teléfono
             </label>
             <input
               defaultValue=""
-              {...register('phonenumber', {
+              {...register('phoneNumber', {
                 required: 'El número de teléfono es requerido',
                 validate: (fieldValue) => {
                   if (!fieldValue) {
@@ -124,11 +123,11 @@ const Franquicias = () => {
                 },
               })}
               type="tel"
-              name="phonenumber"
+              name="phoneNumber"
               className="w-full rounded border border-gray-300 bg-white px-3 py-1 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
             <p className="mt-2 text-left text-xs text-red-600">
-              {formState.errors.phonenumber?.message}
+              {formState.errors.phoneNumber?.message}
             </p>
           </div>
           <div className="relative mb-4">
@@ -137,13 +136,13 @@ const Franquicias = () => {
             </label>
             <select
               name="zone"
+              onChange={(e)=>{setValue("zone",e.target.value)}}
               className="w-full rounded border border-gray-300 bg-white px-3 py-1 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             >
-              <option value="zone1">Capital Federal</option>
-              <option value="zone2">Zona Norte</option>
-              <option value="zone3">Zona Oeste</option>
-              <option value="zone4">Zona Sur</option>
-              <option value="zone4">Otro</option>
+              <option value="Capital Federal">Capital Federal</option>
+              <option value="Zona Norte">Zona Norte</option>
+              <option value="Zona Oeste">Zona Oeste</option>
+              <option value="Zona Sur">Zona Sur</option>
             </select>
           </div>
           <div className="relative mb-4">
